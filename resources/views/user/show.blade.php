@@ -1,0 +1,35 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">{{ __('USER DATA') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+
+                    <form action="/user/{{$User->id}}" method="post">
+                        {{csrf_field()}}
+                        @method('PUT')
+
+                        <table class="table table-responsive">
+                        <tr><th>ID</th><th>:</th><td>{{ $User->id}}</td></tr>
+                        <tr><th>User Name</th><th>:</th><td>{{$User->username}}</td></tr>
+                        <tr><th>Name</th><th>:</th><td>{{$User->name}}</td></tr>
+                        <tr><th>Email</th><th>:</th><td>{{$User->email}}</td></tr>
+                        <tr><th>Role</th><th>:</th><td>{{$User->role}}</td></tr>
+                        </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
